@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>客户端2</title>
+</head>
+<body>
+	<input type="text" id="ip2">
+	<div id="box"></div>
+	<script>
+		var wsurl="ws://10.189.159.219:8000"
+		var wss=new WebSocket(wsurl)
+		wss.onopen=function(){
+			box.innerHTML+='客户端2成功连接<br>'
+		}
+		wss.onmessage=function(ev){
+			box.innerHTML+=ev.data+"<br>"
+		}
+		ip2.onchange=function(){
+			wss.send(ip2.value)
+			ip2.value=''
+		}
+	</script>
+</body>
+</html>
